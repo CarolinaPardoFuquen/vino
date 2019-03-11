@@ -73,8 +73,12 @@ def user_recommendation_list(request):
 
     # get request user cluster name (just the first one righ now)
     try:
-        user_cluster_name = \
-            User.objects.get(username=request.user.username).cluster_set.first().name
+        #user_cluster_name = \
+        #    User.objects.get(username=request.user.username).cluster_set.first().name
+        user_cluster = \
+            User.objects.get(username=request.user.username).cluster_set.first()
+        user_cluster_name = user_cluster.name if user_cluster else None
+
     except: # if no cluster assigned for a user, update clusters
         update_clusters()
         user_cluster_name = \

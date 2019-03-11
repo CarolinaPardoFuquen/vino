@@ -3,29 +3,29 @@
 
 {% block title %}
 <h2>{{ wine.name }}</h2>
-<h5>{{ wine.review_set.count }} reviews ({{ wine.average_rating | floatformat }} average rating)</h5>
+<h5>{{ wine.review_set.count }} valoraciones ({{ wine.average_rating | floatformat }} promedio de valoraciones )</h5>
 {% endblock %}
 
 {% block content %}
-<h3>Recent reviews</h3>
+<h3>Ultimas valoraciones</h3>
 
 {% if wine.review_set.all %}
 <div class="row">
     {% for review in wine.review_set.all %}
     <div class="col-xs-6 col-lg-4">
         <em>{{ review.comment }}</em>
-        <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
+        <h6>Valorado {{ review.rating }} de 5 por <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
         <h5><a href="{% url 'reviews:review_detail' review.id %}">
-        Read more
+        leer más
         </a></h5>
     </div>
     {% endfor %}
 </div>
 {% else %}
-<p>No reviews for this wine yet</p>
+<p>No hay opinions para este artista aún</p>
 {% endif %}
 
-<h3>Add your review</h3>
+<h3>Sus opiniones</h3>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <form action="{% url 'reviews:add_review' wine.id %}" method="post" class="form">

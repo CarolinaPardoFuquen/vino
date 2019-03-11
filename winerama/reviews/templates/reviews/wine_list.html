@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<h2>Wine list</h2>
+<h2>Lista de los artistas</h2>
 {% endblock %}
 
 {% block content %}
@@ -12,12 +12,12 @@
         <h4><a href="{% url 'reviews:wine_detail' wine.id %}">
         {{ wine.name }}
         </a></h4>
-        <h5>{{ wine.review_set.count }} reviews</h5>
-        <h5>{{ wine.average_rating | floatformat }} average rating</h5>
+        <h5>{{ wine.review_set.count }} valoraciones</h5>
+        <h5>{{ wine.average_rating | floatformat }} promedio de los rating </h5>
     </div>
     {% endfor %}
 </div>
 {% else %}
-    <p>No wines are available.</p>
+    <p>No hay artistas disponibles.</p>
 {% endif %}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<h2>Latest reviews</h2>
+<h2>Ultimas Opiniones</h2>
 {% endblock %}
 
 {% block content %}
@@ -10,14 +10,14 @@
     {% for review in latest_review_list %}
     <div class="col-xs-6 col-lg-4">
         <h4><a href="{% url 'reviews:review_detail' review.id %}">
-        {{ review.wine.name }}
+        {{ review.wine }}
         </a></h4>
-        <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
+        <h6>Valorado  {{ review.rating }} de 5 por <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
         <p>{{ review.comment }}</p>
     </div>
     {% endfor %}
 </div>
 {% else %}
-<p>No reviews are available.</p>
+<p>No hay opiniones disponibles aún.</p>
 {% endif %}
 {% endblock %}
