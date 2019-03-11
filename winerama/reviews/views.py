@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .models import Review, Wine, Cluster
 from .forms import ReviewForm
 from .suggestions import update_clusters
+from django.views.generic.list import ListView
 
 import datetime
 
@@ -109,3 +110,14 @@ def user_recommendation_list(request):
         {'username': request.user.username,'wine_list': wine_list}
     )
 
+
+class WineListView(ListView):
+
+    model = Wine
+    paginate_by = 50
+    # context_object_name = 'wine_list'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print('context', context)
+        return context
