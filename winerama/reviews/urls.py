@@ -6,6 +6,7 @@ urlpatterns = [
     # ex: /
     url(r'^$', views.review_list, name='review_list'),
     # ex: /review/5/
+    url(r'^top/', views.top_list, name='top_list'),
     url(r'^review/(?P<review_id>[0-9]+)/$', views.review_detail, name='review_detail'),
     # ex: /wine/
     url(r'^wine$', views.WineListView.as_view(), name='wine_list'),

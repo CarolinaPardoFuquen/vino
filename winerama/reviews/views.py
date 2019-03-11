@@ -27,6 +27,9 @@ def wine_list(request):
     context = {'wine_list':wine_list}
     return render(request, 'reviews/wine_list.html', context)
 
+def top_list(request):
+    return render(request,'reviews/top_list.html')
+
 
 def wine_detail(request, wine_id):
     wine = get_object_or_404(Wine, pk=wine_id)

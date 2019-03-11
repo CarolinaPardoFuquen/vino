@@ -12,7 +12,7 @@ from reviews.models import Review, Wine
 
 def save_review_from_row(review_row):
     review = Review()
-    review.id = review_row[0]
+#    review.id = review_row[0]
     review.user_name = review_row[1]
 #    review.wine = Wine.objects.get(id=review_row[2])
 #    print(review.wine)
